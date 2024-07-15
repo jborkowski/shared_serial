@@ -1,5 +1,5 @@
 use std::net::{TcpListener, TcpStream};
-use std::io::{Read};
+use std::io::Read;
 use serialport::SerialPort;
 
 fn handle_client(mut stream: TcpStream, serial: &mut dyn SerialPort) {
@@ -28,8 +28,8 @@ fn handle_client(mut stream: TcpStream, serial: &mut dyn SerialPort) {
 fn main() {
     let mut serial = serialport::new("/dev/cu.usbmodem2101", 9600).open().expect("Failed to open serial port");
 
-    let listener = TcpListener::bind("0.0.0.0:99919").expect("Failed to bind to address");
-    println!("Server listening on port 99919");
+    let listener = TcpListener::bind("0.0.0.0:12121").expect("Failed to bind to address");
+    println!("Server listening on port 12121");
 
     for stream in listener.incoming() {
         match stream {
